@@ -1,25 +1,29 @@
-<div class="select">
-  <select (change)="selectCategory($event.target.value)" class="category">
-      <option style="display:none">Все категории</option>
+<div class="app">
+
+  <div class="select">
+    <select (change)="selectCategory($event.target.value)" class="category">
+      <option>Все категории</option>
       <option *ngFor="let item of category" value="{{ item }}">
-      {{ item }}
-    </option>
-  </select>
+        {{ item }}
+      </option>
+    </select>
 
-  <select (change)="selectCompany($event.target.value)" class="input">
-    <option style="display:none">Все вхождения</option>
-    <option *ngFor="let item of items" value="{{ item.name }}">
-      {{ item.name }}
-    </option>
-  </select>
-</div>
+    <select (change)="selectCompany($event.target.value)" class="input">
+      <option>Все вхождения</option>
+      <option *ngFor="let item of items" value="{{ item.name }}">
+        {{ item.name }}
+      </option>
+    </select>
+  </div>
 
-<div class="chartContainer">
-  <canvas id="companyChart" chart-data="companiesData" chart-labels="labels"></canvas>
-</div>
+  <div class="chartContainer">
+    <canvas id="companyChart" chart-data="companiesData" chart-labels="labels"></canvas>
+  </div>
 
-<div class="result">
-  <div class="month">Month: {{ month }}</div>
-  <button class="buttonOpen" [hidden]="!edit" (click)="getItem()">Open</button>
-  <div class="total">Total: {{ total }}</div>
+  <div class="result">
+    <div class="month">Month: {{ month }}</div>
+    <button class="buttonOpen" [hidden]="!edit" (click)="getItem()">Open</button>
+    <div class="total">Total: {{ total }}</div>
+  </div>
+  
 </div>

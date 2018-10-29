@@ -17,7 +17,7 @@ export class FilterComponent implements OnInit {
   constructor(private httpService: HttpService) {
   }
 
-  smart() {
+  filter() {
     const myObserver = {
       next: x => this.items = x.map(function (company: any) {
         if (company.monthRevenue.valueOf() > 0) {
@@ -49,7 +49,7 @@ export class FilterComponent implements OnInit {
   }
 
   getItemsList() {
-    this.smart();
+    this.filter();
     return this.items;
   }
 
@@ -58,6 +58,6 @@ export class FilterComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.smart();
+    this.filter();
   }
 }

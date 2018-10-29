@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
   providers: [FilterComponent],
   selector: 'app-designer',
   templateUrl: './designer.component.html',
-  styleUrls: ['./designer.component.css']
+  styleUrls: ['./designer.component.scss']
 })
 export class DesignerComponent implements OnInit, AfterContentChecked {
 
@@ -43,7 +43,7 @@ export class DesignerComponent implements OnInit, AfterContentChecked {
 
   getCategory() {
     this.category = Array.from(new Set(this.items.map(element => {
-       return element.category;
+      return element.category;
     })));
   }
 
@@ -70,8 +70,10 @@ export class DesignerComponent implements OnInit, AfterContentChecked {
     this.items.forEach(item => {
       if (item.category === companyCategory) {
         companies.push(item);
-        this.createChart(companies);
+      } if (companyCategory === 'Все категории') {
+        companies.push(item);
       }
+      this.createChart(companies);
     });
     this.calculateMonth(companies);
     this.calculateTotal(companies);
@@ -93,32 +95,13 @@ export class DesignerComponent implements OnInit, AfterContentChecked {
   }
 
   createChart(companies: Array<any>) {
-    const companiesData = companies.map(company => {
-      return [company.weekStats.monday,
-      company.weekStats.tuesday,
-      company.weekStats.wednesday,
-      company.weekStats.thursday,
-      company.weekStats.friday,
-      company.weekStats.saturday,
-      company.weekStats.sunday];
-    });
+    const companiesData = this.getCompaniesData(companies);
     this.companyChart = new Chart(
       'companyChart', {
         type: 'line',
         data: {
           labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
-          datasets: [
-            {
-              data: companiesData[0],
-              borderColor: '#acafdc',
-              fill: false
-            },
-            {
-              data: companiesData[1],
-              borderColor: '#dsscss',
-              fill: false
-            },
-          ]
+          datasets: companiesData,
         },
         options: {
           legend: {
@@ -134,5 +117,21 @@ export class DesignerComponent implements OnInit, AfterContentChecked {
           }
         }
       });
+  }
+
+  private getCompaniesData(companies: any[]) {
+    return companies.map(company => {
+      return {
+        data: [company.weekStats.monday,
+        company.weekStats.tuesday,
+        company.weekStats.wednesday,
+        company.weekStats.thursday,
+        company.weekStats.friday,
+        company.weekStats.saturday,
+        company.weekStats.sunday],
+        borderColor: '#3e59f383',
+        fill: false
+      };
+    });
   }
 }
