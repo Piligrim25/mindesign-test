@@ -1,0 +1,68 @@
+{
+	"companies": [
+		{
+			"id": 1,
+			"name": "Google",
+			"type": "Technology",
+			"revenuePerWeek": {
+				"monday": 12,
+				"tuesday": 5,
+				"wednesday": 34,
+				"thursday": 15,
+				"friday": 10,
+				"saturday": 21,
+				"sunday": 20
+			},
+			"revenue": 1500,
+			"monthRevenue": 555
+		},
+		{
+			"id": 2,
+			"name": "Walmart",
+			"type": "Retail",
+			"revenuePerWeek": {
+				"monday": 5,
+				"tuesday": 6,
+				"wednesday": 8,
+				"thursday": 10,
+				"friday": 6,
+				"saturday": 5,
+				"sunday": 4
+			},
+			"revenue": 1800,
+			"monthRevenue": 345
+		},
+		{
+			"id": 3,
+			"name": "Apple",
+			"type": "Technology",
+			"revenuePerWeek": {
+				"monday": 0,
+				"tuesday": 0,
+				"wednesday": 0,
+				"thursday": 0,
+				"friday": 0,
+				"saturday": 0,
+				"sunday": 0
+			},
+			"revenue": 0,
+			"monthRevenue": 0
+		},
+		{
+			"id": 4,
+			"name": "IBM",
+			"type": "Technology",
+			"revenuePerWeek": {
+				"monday": 17,
+				"tuesday": 18,
+				"wednesday": 11,
+				"thursday": 5,
+				"friday": 19,
+				"saturday": 18,
+				"sunday": 16
+			},
+			"revenue": 1900,
+			"monthRevenue": 620
+		}
+	]
+}
