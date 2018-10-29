@@ -20,7 +20,7 @@ export class DesignerComponent implements OnInit, AfterContentChecked {
   onItemSelected = new EventEmitter<Company>();
 
   ones = false;
-  companyChart = [];
+  companyChart: Chart = [];
   month = 0;
   total = 0;
   edit = false;
@@ -73,8 +73,9 @@ export class DesignerComponent implements OnInit, AfterContentChecked {
       } if (companyCategory === 'Все категории') {
         companies.push(item);
       }
-      this.createChart(companies);
     });
+    this.companyChart.destroy();
+    this.createChart(companies);
     this.calculateMonth(companies);
     this.calculateTotal(companies);
   }
