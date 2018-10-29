@@ -10,22 +10,8 @@ export class HttpService {
   constructor(private http: HttpClient) { }
 
   getCompanies(): Observable<any> {
-    return this.http.get('src/company.json').pipe(map(data => {
-      console.log(data);
+    return this.http.get('https://api.myjson.com/bins/ccdpu').pipe(map(data => {
       return data['companies'];
     }));
   }
-
-
-  // getCompanys(): Observable<any> {
-  //   return this.http.get('src/company.json').pipe(map(data => {
-  //     const companysList = data['companies'];
-  //     return companysList.map(function (company: any) {
-  //       console.log(company.monthRevenue.valueOf());
-  //       if (company.monthRevenue.valueOf() > 0) {
-  //         return company;
-  //       }
-  //     });
-  //   }));
-  // }
 }
